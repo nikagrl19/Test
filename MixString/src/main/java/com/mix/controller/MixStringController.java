@@ -1,0 +1,25 @@
+package com.mix.controller;
+
+import javax.websocket.server.PathParam;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.mix.service.MixStringService;
+
+@RestController
+public class MixStringController {
+
+    @Autowired
+    private MixStringService mixStringService;
+
+    @PostMapping("/mix3String/{string1}/{string2}/{string3}")
+    public String mix3String(@PathParam(value = "string1") String input1, @PathParam(value = "string2") String input2,
+	    @PathParam(value = "string3") String input4) {
+
+	return this.mixStringService.createString(input1, input2, input4);
+
+    }
+
+}
